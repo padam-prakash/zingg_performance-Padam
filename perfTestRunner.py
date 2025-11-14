@@ -67,6 +67,8 @@ def save_results(data):
 def run_phase(phases, commandLine):
     """Run a single test phase."""
     print(f"Running phase - {phases}")
+    print(f"Command: {commandLine}")
+    print(f"Working Directory: {os.getcwd()}")
     exit_code = subprocess.call(commandLine, shell=True)
     return exit_code
 
@@ -163,6 +165,9 @@ def main():
     perform_load_test()
     if teardown:
         subprocess.run(f"python3 {teardown}", shell=True, check=True, env=os.environ)
+    print("perfTestRunner: Test completed successfully.")
+    #print cwd
+    print("Current working directory:", os.getcwd())
 
 if __name__ == "__main__":
     main()
